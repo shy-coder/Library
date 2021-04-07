@@ -1,6 +1,7 @@
 package com.shy.service;
 
 import com.shy.dao.UserDao;
+import com.shy.pojo.Admin;
 import com.shy.pojo.User;
 
 import javax.servlet.http.HttpSession;
@@ -30,7 +31,27 @@ public class UserService {
         }
     }
 
-    public String addUser(User user, HttpSession session) {
+    public String adminLogin(String username, String password, HttpSession session) {
+        Admin admin = null;
+        try {
+            admin = userDao.selectOne(username, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (admin == null) {
+            return "用户不存在";
+        } else {
+            if (password.equals(admin.getPassword())) {
+                session.setAttribute("admin", admin);
+                session.setAttribute("isLogin", true);
+                return "1";
+            } else {
+                return "密码错误";
+            }
+        }
+    }
+
+    public String addUser(User user) {
         String result;
         int rs = -1;
         try {
@@ -42,7 +63,6 @@ public class UserService {
             result = "注册成功";
         } else {
             result = "注册失败";
-            session.setAttribute("message", "注册失败");
         }
         return result;
     }

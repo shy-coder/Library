@@ -14,16 +14,17 @@
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
-  
-  <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.shy.servlet.LoginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
+
+  <filter>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>com.shy.filter.AdminFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
     <url-pattern>/login</url-pattern>
-  </servlet-mapping>
+  </filter-mapping>
+  
+
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.shy.servlet.RegisterServlet</servlet-class>
