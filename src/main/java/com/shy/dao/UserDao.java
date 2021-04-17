@@ -53,15 +53,15 @@ public class UserDao {
         return admin;
     }
 
-    public int addUser(User user) throws SQLException {
+    public int addUser(User register) throws SQLException {
         Connection connection = JDBCUtil.getConnection();
         PreparedStatement pstm = null;
-        int result = -1;
-        String sql = "INSERT borrow_card (username,password,reader) VALUES (?,?,?)";
-        Object[] params = {user.getUsername(), user.getPassword()
-                , user.getReader()};
-        result = JDBCUtil.execute(connection, pstm, sql, params);
-        JDBCUtil.closeResource(connection, pstm, null);
-        return result;
+        String sql = "INSERT IGNORE INTO `borrow_card` (username," +
+                "`password`, reader) \n" +
+                "SELECT ?,?,? WHERE NOT EXISTS (\n" +
+                "SELECT 1 FROM borrow_card WHERE `username`=?);";
+        Object[] params = {register.getUsername(), register.getPassword(), register.getReader(), register.getUsername()};
+        int rs = JDBCUtil.execute(connection, pstm, sql, params);
+        return rs;
     }
 }

@@ -23,15 +23,5 @@
     <filter-name>AdminFilter</filter-name>
     <url-pattern>/login</url-pattern>
   </filter-mapping>
-  
-
-  <servlet>
-    <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>com.shy.servlet.RegisterServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
-    <url-pattern>/register</url-pattern>
-  </servlet-mapping>
 
 </web-app>

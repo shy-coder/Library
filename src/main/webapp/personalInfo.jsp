@@ -18,8 +18,7 @@
 				<div class="layui-card-header">设置我的资料</div>
 				<div class="layui-card-body" pad15>
 					<div class="layui-row">
-						<div class="layui-col-md2"
-							 style="display: flex;justify-content: flex-end;">
+						<div class="layui-col-md2" style="display: flex;justify-content: flex-end;">
 							<img class="layui-header"
 								 src="<jsp:getProperty name="user" property="header"/>"/>
 						</div>
@@ -120,15 +119,8 @@
 								</div>
 								<div class="layui-form-item">
 									<div class="layui-input-block">
-										<button class="layui-btn"
-												lay-submit
-												lay-filter="setmyinfo">
-											确认修改
-										</button>
-										<button type="reset"
-												class="layui-btn layui-btn-primary">
-											重新填写
-										</button>
+										<button class="layui-btn" lay-submit lay-filter="setmyinfo">确认修改</button>
+										<button type="reset" class="layui-btn layui-btn-primary">重新填写</button>
 									</div>
 								</div>
 							</div>

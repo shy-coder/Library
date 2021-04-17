@@ -51,19 +51,17 @@ public class UserService {
         }
     }
 
-    public String addUser(User user) {
-        String result;
-        int rs = -1;
+    public String register(User register) {
+        int result = 0;
         try {
-            rs = userDao.addUser(user);
+            result = userDao.addUser(register);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if (rs == 1) {
-            result = "注册成功";
+        if (result > 0) {
+            return "注册成功";
         } else {
-            result = "注册失败";
+            return "用户已存在";
         }
-        return result;
     }
 }
