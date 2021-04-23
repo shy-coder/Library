@@ -64,4 +64,29 @@ public class UserService {
             return "用户已存在";
         }
     }
+
+    public User getUserInfo(String username) {
+        User user = null;
+        try {
+            user =  userDao.selectOne(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public String uploadUserInfo(User user, HttpSession session) {
+        int result = 0;
+        try {
+            result = userDao.updateOne(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (result > 0) {
+            User userInfo = getUserInfo(user.getUsername());
+            session.setAttribute("user", userInfo);
+            return "更新成功";
+        }
+        return "更新失败";
+    }
 }

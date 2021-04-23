@@ -64,4 +64,21 @@ public class UserDao {
         int rs = JDBCUtil.execute(connection, pstm, sql, params);
         return rs;
     }
+
+    public int updateOne(User user) throws SQLException {
+        int rs = -1;
+        Connection connection = JDBCUtil.getConnection();
+        PreparedStatement pstm = null;
+        StringBuilder sql = new StringBuilder("update borrow_card set reader=?, cellphone=?, email=?, sex=?, borrow_card.`describe`=? ");
+        if (user.getHeader() != null) {
+            sql.append(", header=? where username=?");
+            Object[] params = {user.getReader(), user.getCellphone(), user.getEmail(), user.isSex(), user.getDescribe(), user.getHeader(), user.getUsername()};
+            rs = JDBCUtil.execute(connection, pstm, sql.toString(), params);
+        }else {
+            sql.append("where username=?");
+            Object[] params = {user.getReader(), user.getCellphone(), user.getEmail(), user.isSex(), user.getDescribe(), user.getUsername()};
+            rs = JDBCUtil.execute(connection, pstm, sql.toString(), params);
+        }
+        return rs;
+    }
 }

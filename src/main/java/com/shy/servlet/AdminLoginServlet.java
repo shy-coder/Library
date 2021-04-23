@@ -19,7 +19,6 @@ public class AdminLoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-
         String result = userService.adminLogin(username, password, req.getSession());
         if ("1".equals(result)) {
             resp.sendRedirect("/admin/main.jsp");

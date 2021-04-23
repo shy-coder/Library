@@ -8,8 +8,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
+    private String id;
     private String name;
     private String author;
     private String sort;
     private String description;
+    private boolean store;
+
+    public Book(String id, String name, String author, String sort,
+                String description) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.sort = sort;
+        this.description = description;
+    }
 }
+

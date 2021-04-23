@@ -17,21 +17,18 @@
 </head>
 <body class="layui-layout-body">
 
-<%
-	User user = (User) request.getSession().getAttribute("user");
-%>
-
 <div class="layui-layout layui-layout-admin">
 	<div class="layui-header">
 		<div class="layui-logo" style="font-size: 25px">图书馆</div>
 		<ul class="layui-nav layui-layout-right">
 			<li class="layui-nav-item">
-				<a href="javascript:;">
-					<img src="<%=user.getHeader()%>"
-						 class="layui-nav-img">
-					<%=user.getReader()%>
+				<a href="javascript:;" id="info">
+					<img id="head" src="${sessionScope.user.header}" class="layui-nav-img">
+					<span id="reader">${sessionScope.user.reader}</span>
 				</a>
-				<dl class="layui-nav-child" style="height: fit-content">
+				</a>
+				<dl class="layui-nav-child"
+					style="height: fit-content">
 					<dd><a href="javascript:;" name="borrow"
 						   title="个人信息"
 						   content="./personalInfo.jsp" id="4">个人信息
@@ -121,10 +118,12 @@
 	layui.use(['element'], function () {
 		var element = layui.element;
 		var $ = layui.$;
+
 		$("[name=borrow]").click(function () {
 			//获取当前项的id和content
 			var id = $(this).attr("id");
 			var content = $(this).attr("content");
+
 			//判断标签是否存在
 			if ($("li[lay-id=" + id + "]").length == 0) {
 				//添加新标签
