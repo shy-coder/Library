@@ -1,14 +1,12 @@
-<%@ page import="com.shy.pojo.User" %>
 <%@ page import="com.shy.pojo.Admin" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>图书馆管理端</title>
-    <link rel="stylesheet" href="/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../layui/css/layui.css"/>
     <style>
         .layui-show {
             width: 100%;
@@ -52,15 +50,12 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a href="javascript:;">图书服务</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" name="borrow"
-                               title="查询图书"
-                               content="./searchBooks.jsp" id="2"
-                        >查询图书
+                        <dd><a href="javascript:;" name="borrow" title="查询图书" content="./BookList.jsp" id="2">
+                            查询图书
                         </a></dd>
-                        <dd><a href="javascript:;" name="borrow"
-                               title="借阅历史"
-                               content="./borrowHistory.jsp" id="3">
-                            借阅历史</a></dd>
+                        <dd><a href="javascript:;" name="borrow" title="借阅历史" content="./borrowHistory.jsp" id="3">
+                            借阅历史
+                        </a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -100,21 +95,19 @@
              style="display: flex;flex-direction: column;height:
 		     100%;margin: 0;padding: 0;">
             <ul class="layui-tab-title">
-
             </ul>
             <div class="layui-tab-content"
                  style="flex-grow: 1;">
-
             </div>
         </div>
     </div>
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        © 软件工程专业
+        © coder_shy
     </div>
 </div>
-<script src="./layui/layui.js"></script>
+<script src="../layui/layui.js"></script>
 <script>
     //JavaScript代码区域
     layui.use(['element'], function () {

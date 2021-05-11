@@ -24,4 +24,19 @@
     <url-pattern>/login</url-pattern>
   </filter-mapping>
 
+  <context-param>
+    <param-name>StudentID</param-name>
+    <param-value>2002932313</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>packageName</param-name>
+    <param-value>com.shy</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>cn.edu.niit.monitor.ApplicationListener</listener-class>
+  </listener>
+
+
 </web-app>

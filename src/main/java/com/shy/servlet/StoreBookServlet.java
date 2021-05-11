@@ -22,6 +22,7 @@ public class StoreBookServlet extends HttpServlet {
         //取参（req当前的页码, 每页的数量, 搜索）
         String paramJson = IOUtils.toString(req.getInputStream(), "UTF-8");
         HashMap<String, Object> parseObject = JSON.parseObject(paramJson, HashMap.class);
+        System.out.println(parseObject.get("user"));
         String username = (String) parseObject.get("user");
         String bookId = (String) parseObject.get("book");
         String message = bookService.storeBook(username, bookId);

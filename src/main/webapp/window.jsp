@@ -9,7 +9,7 @@
 
     if (message != null && !message.equals("")) {
 %>
-<script src="./layui/layui.all.js"></script>
+<script src="/layui/layui.all.js"></script>
 <script>
     layer.msg("<%=message%>");
 </script>

@@ -1,13 +1,46 @@
 package com.shy.service;
 
 import com.shy.dao.BookDao;
+import com.shy.dao.UserMapper;
 import com.shy.pojo.Book;
+import com.shy.utils.MybatisUtils;
+import org.apache.ibatis.session.SqlSession;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class BookService {
+
     private BookDao bookDao = new BookDao();
+    SqlSession sqlSession = MybatisUtils.getSqlSession();
+    UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+    public boolean updateBook(Book book) {
+        int i = mapper.updateBook(book);
+        if (i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean deleteBook(String id) {
+        int i = mapper.deleteBook(id);
+        if (i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean addBook(Book book) {
+        int i = mapper.addBook(book);
+        if (i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     public List<Book> searchAllBooks(String username, int pageNum, int pageSize) {
         List<Book> books = null;

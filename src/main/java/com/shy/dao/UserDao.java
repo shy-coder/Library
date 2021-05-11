@@ -41,13 +41,13 @@ public class UserDao {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         Admin admin = null;
-        String sql = "select * from admin where username = ?";
-        Object[] params = {username, password};
+        String sql = "select * from `admin` where username = ?";
+        Object[] params = {username};
         rs = JDBCUtil.execute(connection, pstm, rs, sql, params);
         while (rs.next()) {
             admin = new Admin();
             admin.setUsername(rs.getString("username"));
-            admin.setPassword(rs.getString("passworld"));
+            admin.setPassword(rs.getString("password"));
         }
         JDBCUtil.closeResource(connection, pstm, rs);
         return admin;

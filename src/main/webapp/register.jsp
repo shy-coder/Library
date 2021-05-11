@@ -107,7 +107,8 @@
         </div>
         <hr style="width: 85%"/>
         <p style="width: 85%"><a href="index.jsp" class="fl">
-            已有账号？立即登录</a><a href="javascript:;" style="float: right">忘记密码？
+            已有账号？立即登录</a><a href="javascript:;"
+                            style="float: right">忘记密码？
         </a></p>
     </form>
 </div>

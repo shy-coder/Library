@@ -15,9 +15,15 @@ public class Book {
     private String description;
     private boolean store;
 
-    public Book(String id, String name, String author, String sort,
-                String description) {
+    public Book(String id, String name, String author, String sort, String description) {
         this.id = id;
+        this.name = name;
+        this.author = author;
+        this.sort = sort;
+        this.description = description;
+    }
+
+    public Book(String name, String author, String sort, String description) {
         this.name = name;
         this.author = author;
         this.sort = sort;
