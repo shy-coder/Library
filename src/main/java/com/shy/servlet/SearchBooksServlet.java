@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,5 +47,6 @@ public class SearchBooksServlet extends HttpServlet {
         req.getSession().setAttribute("books", books);
         //将count直接作为ajax请求的结果返回
         resp.getWriter().print(count);
+
     }
 }

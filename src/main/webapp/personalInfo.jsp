@@ -19,7 +19,7 @@
 		<div class="layui-col-md12">
 			<div class="layui-card">
 				<div class="layui-card-header">设置我的资料</div>
-				<div class="layui-card-body" pad15>
+				<div class="layui-card-body" pad15>1
 					<div class="layui-row">
 						<div class="layui-col-md2"
 						     style="display: flex;justify-content: flex-end;">

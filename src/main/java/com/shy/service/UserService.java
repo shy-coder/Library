@@ -1,15 +1,54 @@
 package com.shy.service;
 
+import com.shy.dao.BookMapper;
 import com.shy.dao.UserDao;
+import com.shy.dao.UserMapper;
 import com.shy.pojo.Admin;
 import com.shy.pojo.User;
+import com.shy.utils.MybatisUtils;
+import org.apache.ibatis.session.SqlSession;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserService {
 
     private UserDao userDao = new UserDao();
+    SqlSession sqlSession = MybatisUtils.getSqlSession();
+    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+    public List<User> selectAll() {
+        List<User> list = userMapper.selectAll();
+        return list;
+    }
+
+    public boolean deleteUser(String id) {
+        int i = userMapper.deleteUser(id);
+        if (i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean addUser(User user) {
+        int i = userMapper.addUser(user);
+        if (i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean updateUser(User user) {
+        int i = userMapper.updateUser(user);
+        if (i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     public String login(String username, String password, HttpSession session) {
         User user = null;

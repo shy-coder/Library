@@ -63,7 +63,7 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" name="borrow"
                                title="个人信息"
-                               content="./personalInfo.jsp" id="4">
+                               content="./UserList.jsp" id="4">
                             个人信息</a></dd>
                         <dd><a href="javascript:;" name="borrow"
                                title="图书收藏"

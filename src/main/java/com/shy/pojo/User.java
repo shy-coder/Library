@@ -1,13 +1,12 @@
 package com.shy.pojo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class User {
+    private String id;
     private String username;
     private String password;
     private String reader;
@@ -16,6 +15,22 @@ public class User {
     private String email;
     private String describe;
     private boolean sex;
+
+    public User(String id, String username, String password, String reader, String header, String cellphone, String email, String describe, boolean sex) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.reader = reader;
+        this.header = header;
+        this.cellphone = cellphone;
+        this.email = email;
+        this.describe = describe;
+        if ("男".equals(sex)) {
+            this.sex = true;
+        } else {
+            this.sex = false;
+        }
+    }
 
     public User(String username, String password) {
         this.username = username;

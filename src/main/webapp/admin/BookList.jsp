@@ -181,7 +181,7 @@
                         id:bookId
                     }),
                     contentType: "application/json;charset=utf-8",
-                    success: function (data) {
+                    success: function () {
                         layer.alert("删除成功", {icon: 1})
                         queryBooks()
                         location.reload()
@@ -191,7 +191,47 @@
                         console.log(e)
                     }
                 });
-            })
+            });
+
+            // 更新图书
+            $(document).on('click', '#update', function () {
+                const bookId = $(this).attr("index");
+                console.log(bookId)
+                layer.open({
+                    title: '修改图书',
+                    content: $('#addBooksPanel'),
+                    area: '600px',
+                    btn: ['确认修改', '取消'],
+                    yes: function (index, layero) {
+                        const bookName = document.getElementsByName('bookName')[0].value;
+                        const bookAuthor = document.getElementsByName('bookAuthor')[0].value;
+                        const bookSort = document.getElementsByName('bookSort')[0].value;
+                        const bookDescription = document.getElementsByName('bookDescription')[0].value;
+                        $.ajax({
+                            type: 'post',
+                            url: "/book/update",
+                            data: JSON.stringify({
+                                id: bookId,
+                                name: bookName,
+                                author: bookAuthor,
+                                sort: bookSort,
+                                description: bookDescription
+                            }),
+                            contentType: "application/json;charset=utf-8",
+                            success: function (res) {
+                                layer.alert("修改成功", {icon: 1})
+                                queryBooks()
+                                location.reload() //刷新页面
+                            },
+                            error: function (e) {
+                                layer.msg("修改失败！", {icon: 2})
+                                console.log(e)
+                            }
+                        });
+                    }
+                });
+            });
+
 
             $('#search').click(function () {
                 var keyword = $('#keyword').val();

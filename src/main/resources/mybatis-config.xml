@@ -19,15 +19,8 @@
     </environments>
 
     <mappers>
+        <mapper resource="mapper/BookMapper.xml"/>
         <mapper resource="mapper/UserMapper.xml"/>
 
-        <!-- 第一种方式，加载 resource-->
-<!--        <mapper resource="User.xml"></mapper>-->
-<!--        <mapper resource="UserMapper.xml"/>-->
-        <!-- 第三种方式，包扫描器要求(推荐使用此方式)：
-             1、映射文件与接口同一目录下
-             2、映射文件名必需与接口文件名称一致
-        -->
-        <!--<package name="com.cenobitor.mapper"/>-->
     </mappers>
 </configuration>

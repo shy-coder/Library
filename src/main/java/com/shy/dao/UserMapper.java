@@ -1,13 +1,17 @@
 package com.shy.dao;
 
-import com.shy.pojo.Book;
+import com.shy.pojo.User;
+
+import java.util.List;
 
 public interface UserMapper {
 
-    int addBook(Book book);
+    List<User> selectAll();
 
-    int deleteBook(String id);
+    int deleteUser(String id);
 
-    int updateBook(Book book);
+    int addUser(User user);
+
+    int updateUser(User user);
 
 }

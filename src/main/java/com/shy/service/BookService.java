@@ -1,7 +1,7 @@
 package com.shy.service;
 
 import com.shy.dao.BookDao;
-import com.shy.dao.UserMapper;
+import com.shy.dao.BookMapper;
 import com.shy.pojo.Book;
 import com.shy.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -13,7 +13,7 @@ public class BookService {
 
     private BookDao bookDao = new BookDao();
     SqlSession sqlSession = MybatisUtils.getSqlSession();
-    UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+    BookMapper mapper = sqlSession.getMapper(BookMapper.class);
 
     public boolean updateBook(Book book) {
         int i = mapper.updateBook(book);
