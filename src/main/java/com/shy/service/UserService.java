@@ -63,6 +63,7 @@ public class UserService {
             if (password.equals(user.getPassword())) {
                 session.setAttribute("user", user);
                 session.setAttribute("isLogin", true);
+                session.setAttribute("userId",user.getId());
                 return "1";
             } else {
                 return "密码错误";

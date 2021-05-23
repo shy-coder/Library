@@ -22,6 +22,7 @@ public class UserDao {
             rs = JDBCUtil.execute(connection, pstm, rs, sql, params);
             while (rs.next()) {
                 user = new User();
+                user.setId(rs.getString("id"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setReader(rs.getString("reader"));

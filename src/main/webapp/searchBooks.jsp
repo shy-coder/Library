@@ -65,7 +65,7 @@
 					<button class="layui-btn layui-btn-primary layui-btn-xs detail" id="info" index="${status.index}">
 						查看
 					</button>
-					<button class="layui-btn layui-btn-xs borrow" id="borrow" index="${status.index}">
+					<button class="layui-btn layui-btn-xs borrow" id="borrow" index="${book.id }">
 						借阅
 					</button>
 					<button class="layui-btn layui-btn-xs borrow" id="store" index="${book.id}">
@@ -118,16 +118,32 @@
 
 				}
 			});
-		})
+		});
 
-		//借阅按钮的点击事件
+		//借阅
 		$(document).on('click', '#borrow', function () {
 			//可以获取第一列的内容，也就是name的值
 			var name = $(this).parents("tr").find("td").eq(0).text();
 			//也可以获取属性中的值
-			console.log($(this).attr("index"))
-			layer.msg(name)
-		})
+			const bookId = $(this).attr("index");
+			$.ajax({
+				type: 'POST',
+				url: "/book/addborrow",
+				async: false, //开启同步请求，为了保证先得到count再渲染表格
+				data: JSON.stringify({
+					bookId: bookId,
+					userId: "${sessionScope.user.id}"
+				}),
+				contentType: "application/json;charset=utf-8",
+				success: function (data) {
+					layer.msg("借阅成功！")
+				},
+				error:function (){
+					layer.msg("借阅失败！")
+				}
+			})
+			console.log("${sessionScope.userId}");
+		});
 
 
 		$('#search').click(function () {

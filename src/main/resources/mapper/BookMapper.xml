@@ -21,4 +21,32 @@
         WHERE id=#{id}
     </update>
 
+    <insert id="addBorrowBook" parameterType="string">
+        INSERT `borrow_books`
+            (card_id,book_id)
+        VALUES
+            (#{userId},#{bookId})
+    </insert>
+
+    <delete id="deleteBorrowBook" parameterType="string">
+        delete from borrow_books where id=#{id}
+    </delete>
+
+    <select id="queryBorrowBooks" resultMap="borrowBookMap">
+        SELECT borrow_books.id as id,books.id AS bookID,books.`name` AS name,books.author AS author,books.sort_id AS sort,books.description AS description
+        FROM books
+        INNER JOIN borrow_books
+        ON borrow_books.book_id = books.id
+        WHERE borrow_books.card_id = #{userId}
+    </select>
+
+    <resultMap id="borrowBookMap" type="com.shy.pojo.BorrowBook">
+        <result property="id" column="id"/>
+        <result property="bookID" column="bookID"/>
+        <result property="name" column="name"/>
+        <result property="author" column="author"/>
+        <result property="sort" column="sort"/>
+        <result property="description" column="description"/>
+    </resultMap>
+
 </mapper>

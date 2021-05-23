@@ -1,7 +1,10 @@
 package com.shy.service;
 
 import com.shy.pojo.Book;
+import com.shy.pojo.BorrowBook;
 import org.junit.Test;
+
+import java.util.List;
 
 public class BookServiceTest {
 
@@ -26,5 +29,24 @@ public class BookServiceTest {
         boolean b = bookService.updateBook(book);
         System.out.println(b);
     }
+
+    @Test
+    public void addBorrowBook() {
+        boolean b = bookService.addBorrowBook("1805010222", "4");
+        System.out.println(b);
+    }
+
+    @Test
+    public void delBorrowBook() {
+        boolean b = bookService.delBorrowBook("20");
+        System.out.println(b);
+    }
+
+    @Test
+    public void queryBorrowBooks() {
+        List<BorrowBook> books = bookService.queryBorrowBooks("1805010222");
+        System.out.println(books.toString());
+    }
+
 
 }

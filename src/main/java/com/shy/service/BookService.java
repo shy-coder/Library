@@ -3,10 +3,12 @@ package com.shy.service;
 import com.shy.dao.BookDao;
 import com.shy.dao.BookMapper;
 import com.shy.pojo.Book;
+import com.shy.pojo.BorrowBook;
 import com.shy.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookService {
@@ -14,6 +16,34 @@ public class BookService {
     private BookDao bookDao = new BookDao();
     SqlSession sqlSession = MybatisUtils.getSqlSession();
     BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+
+    public List<BorrowBook> queryBorrowBooks(String userId) {
+        List<BorrowBook> books = new ArrayList<>();
+        if (userId!=null){
+            books = mapper.queryBorrowBooks(userId);
+        } else {
+            System.out.println("id为空");
+        }
+        return books;
+    }
+
+    public boolean addBorrowBook(String userId, String bookId) {
+        int i = mapper.addBorrowBook(userId, bookId);
+        if (i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean delBorrowBook(String id) {
+        int i = mapper.deleteBorrowBook(id);
+        if (i>0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     public boolean updateBook(Book book) {
         int i = mapper.updateBook(book);
