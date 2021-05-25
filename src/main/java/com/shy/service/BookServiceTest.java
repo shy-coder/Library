@@ -48,5 +48,11 @@ public class BookServiceTest {
         System.out.println(books.toString());
     }
 
+    @Test
+    public void queryAllBorrow() {
+        List<BorrowBook> borrowBooks = bookService.queryAllBorrow();
+        System.out.println(borrowBooks.toString());
+    }
+
 
 }

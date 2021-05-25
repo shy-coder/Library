@@ -19,4 +19,6 @@ public interface BookMapper {
     int deleteBorrowBook(String id);
 
     List<BorrowBook> queryBorrowBooks(String userId);
+
+    List<BorrowBook> queryAllBorrow();
 }

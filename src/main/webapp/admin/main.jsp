@@ -131,6 +131,20 @@
             //切换标签
             element.tabChange("tabTemp", id);
         });
+        $(document).on('click','#3',function () {
+            $.ajax({
+                type: 'GET',
+                url: "/admin/getBorrowBook",
+                async: false, //开启同步请求，为了保证先得到count再渲染表格
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    console.log('借阅历史获取成功！！！')
+                },
+                error:function () {
+                    console.log('借阅历史获取失败')
+                }
+            })
+        });
     });
 </script>
 </body>

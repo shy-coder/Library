@@ -40,6 +40,15 @@
         WHERE borrow_books.card_id = #{userId}
     </select>
 
+    <select id="queryAllBorrow" resultMap="borrowMap">
+        SELECT borrow.id AS id, book.`name` AS `name`,book.author AS author,card.username AS username, card.reader AS reader
+        FROM borrow_books AS borrow
+        INNER JOIN borrow_card AS card
+        ON borrow.card_id = card.id
+        INNER JOIN books AS book
+        ON borrow.book_id = book.id
+    </select>
+
     <resultMap id="borrowBookMap" type="com.shy.pojo.BorrowBook">
         <result property="id" column="id"/>
         <result property="bookID" column="bookID"/>
@@ -47,6 +56,14 @@
         <result property="author" column="author"/>
         <result property="sort" column="sort"/>
         <result property="description" column="description"/>
+    </resultMap>
+
+    <resultMap id="borrowMap" type="com.shy.pojo.BorrowBook">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="author" column="author"/>
+        <result property="username" column="username"/>
+        <result property="reader" column="reader"/>
     </resultMap>
 
 </mapper>

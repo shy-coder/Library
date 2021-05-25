@@ -17,6 +17,12 @@ public class BookService {
     SqlSession sqlSession = MybatisUtils.getSqlSession();
     BookMapper mapper = sqlSession.getMapper(BookMapper.class);
 
+
+    public List<BorrowBook> queryAllBorrow() {
+        List<BorrowBook> borrowBooks = mapper.queryAllBorrow();
+        return borrowBooks;
+    }
+
     public List<BorrowBook> queryBorrowBooks(String userId) {
         List<BorrowBook> books = new ArrayList<>();
         if (userId!=null){
